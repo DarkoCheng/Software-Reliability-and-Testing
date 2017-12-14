@@ -1,0 +1,7 @@
+To run my test suit, you need to type :
+java -cp junit-4.10.jar:. TestSuite
+then you can use java to run, still you need to include the path to the package
+
+To run test cases for the system testing:
+Simply type ./runtests
+It will show the fail or pass result for each test cases.

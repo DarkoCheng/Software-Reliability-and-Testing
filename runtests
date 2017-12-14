@@ -1,0 +1,44 @@
+#!/bin/sh
+
+#echo "HELLO" | ./cmulookup ./testcases*/lengthOfLine1
+OUTPUT2=$(echo | java TranscriptReader brokendata.txt 3> /dev/null)
+EXIT2=$?
+if [ $EXIT2 -eq 0 ]
+then
+	echo "Test case: broken data\nPASS\nOUTPUT:$OUTPUT2\n"
+else
+	echo "Test case: brokendata\nFAIL\nOUTPUT:$OUTPUT2\n"
+fi
+OUTPUT1=$(echo |java TranscriptReader fullmarks.txt 2> /dev/null)
+EXIT1=$?
+if [ $EXIT1 -eq 0 ]
+then
+	echo "Test case: fullmarks\nPASS\nOUTPUT:$OUTPUT1\n"
+else
+	echo "Test case: fullmarks\nFAIL\n$OUTPUT1\n"
+fi
+OUTPUT3=$(echo | java TranscriptReader brokenheader.txt 3> /dev/null)
+EXIT3=$?
+if [ $EXIT3 -eq 0 ]
+then
+	echo "Test case: broken header\nPASS\nOUTPUT:$OUTPUT3\n"
+else
+	echo "Test case: broken header\nFAIL\nOUTPUT:$OUTPUT3\n"
+fi
+OUTPUT5=$(echo | java TranscriptReader wrongfile.txt 3> /dev/null)
+EXIT5=$?
+if [ $EXIT5 -eq 0 ]
+then
+	echo "Test case: no such file\nPASS\nOUTPUT:$OUTPUT5\n"
+else
+	echo "Test case: no such file\nFAIL\nOUTPUT:$OUTPUT5\n"
+fi
+OUTPUT4=$(echo | java TranscriptReader 3> /dev/null)
+EXIT4=$?
+if [ $EXIT4 -eq 0 ]
+then
+	echo "Test case: no file input\nPASS\nOUTPUT:$OUTPUT4\n"
+else
+	echo "Test case: no file input\nFAIL\nOUTPUT:$OUTPUT4\n"
+fi
+

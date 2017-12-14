@@ -1,0 +1,210 @@
+Task 3.1:
+System integration components:TranscriptReader, Parser, Database, GPAcalculator, GPAconverter, WordExtractor, CourseInfo, TermInfo
+Messages:
+    TranscriptReader: Line 45 -> Parser: Line 28 
+    TranscriptReader: Line 54 -> Parser: Line 49
+    TranscriptReader: Line 57 -> Database: Line 42
+    TranscriptReader: Line 57 -> Database: Line 50
+    TranscriptReader: Line 59 -> Database: Line 58
+    TranscriptReader: Line 60 -> Database: Line 58
+    TranscriptReader: Line 61 -> Database: Line 69
+    TranscriptReader: Line 62 -> Database: Line 80
+    TranscriptReader: Line 63 -> Database: Line 125
+    TranscriptReader: Line 65 -> Database: Line 106
+    TranscriptReader: Line 66 -> Database: Line 110
+    TranscriptReader: Line 67 -> Database: Line 125
+    TranscriptReader: Line 70 -> Database: Line 95
+    TranscriptReader: Line 71 -> Database: Line 110
+    TranscriptReader: Line 74 -> Database: Line 161
+    TranscriptReader: Line 77 -> Database: Line 169
+
+    Database: Line 33 -> GPAcalculator: Line 34
+    Database: Line 163 -> GPAcalculator: Line 110
+    Database: Line 171 -> GPAcalculator: Line 148
+    Database: Line 182 -> GPAcalculator: Line 53
+
+    Parser: Line 30 -> WordExtractor: Line 25
+    Parser: Line 40 -> WordExtractor: Line 39
+    Parser: Line 60 -> Database: Line 29
+    Parser: Line 63 -> Database: Line 179 
+    Parser: Line 66 -> WordExtractor: Line 92
+    Parser: Line 69 -> WordExtractor: Line 87
+    Parser: Line 89 -> WordExtractor: Line 92
+    Parser: Line 96 -> WordExtractor: Line 97
+    Parser: Line 141 -> WordExtractor: Line 97
+    Parser: Line 149 -> WordExtractor: Line 97
+    Parser: Line 153 -> GPAconverter: Line 23
+    Parser: Line 152 -> CourseInfo: Line 21 
+    Parser: Line 156 -> CourseInfo: Line 26
+    Parser: Line 169 -> WordExtractor: Line 97
+    Parser: Line 192 -> WordExtractor: Line 97
+    Parser: Line 212 -> WordExtractor: Line 97
+
+    GPAcalculator: Line 40 -> TermInfo: Line 18
+    GPAcalculator: Line 100 -> GPAconverter: Line 22
+    GPAcalculator: Line 132 -> GPAconverter: Line 48 
+    GPAcalculator: Line 137 -> GPAconverter: Line 48
+    
+Will boundary testing suffice?
+In some messages, boundary testing will works. For example, GPAcalculator sends messages to GPAconverter to get the converted grade. 
+    GPAcalculator: Line 40 -> TermInfo: Line 18
+    GPAcalculator: Line 100 -> GPAconverter: Line 22
+    GPAcalculator: Line 132 -> GPAconverter: Line 48 
+    GPAcalculator: Line 137 -> GPAconverter: Line 48
+     Database: Line 33 -> GPAcalculator: Line 34
+    Database: Line 163 -> GPAcalculator: Line 110
+    Database: Line 171 -> GPAcalculator: Line 148
+    Database: Line 182 -> GPAcalculator: Line 53
+
+However, in some cases, boundary testing will not suffice. For example, TranscriptReader sends messages to Parser and Database.
+Parser: Line 30 -> WordExtractor: Line 25
+    Parser: Line 40 -> WordExtractor: Line 39
+    Parser: Line 60 -> Database: Line 29
+    Parser: Line 63 -> Database: Line 179 
+    Parser: Line 66 -> WordExtractor: Line 92
+    Parser: Line 69 -> WordExtractor: Line 87
+    Parser: Line 89 -> WordExtractor: Line 92
+    Parser: Line 96 -> WordExtractor: Line 97
+    Parser: Line 141 -> WordExtractor: Line 97
+    Parser: Line 149 -> WordExtractor: Line 97
+    Parser: Line 153 -> GPAconverter: Line 23
+    Parser: Line 152 -> CourseInfo: Line 21 
+    Parser: Line 156 -> CourseInfo: Line 26
+    Parser: Line 169 -> WordExtractor: Line 97
+    Parser: Line 192 -> WordExtractor: Line 97
+    Parser: Line 212 -> WordExtractor: Line 97
+
+Are equivalence classes relevant?
+Just like last question, equivalence classes only relevants to some test cases, such as the test cases realte to the grade. 
+    GPAcalculator: Line 40 -> TermInfo: Line 18
+    GPAcalculator: Line 100 -> GPAconverter: Line 22
+    GPAcalculator: Line 132 -> GPAconverter: Line 48 
+    GPAcalculator: Line 137 -> GPAconverter: Line 48
+     Database: Line 33 -> GPAcalculator: Line 34
+    Database: Line 163 -> GPAcalculator: Line 110
+    Database: Line 171 -> GPAcalculator: Line 148
+    Database: Line 182 -> GPAcalculator: Line 53
+
+Does a decision table assist you?
+The decision table will assist the testing since there are lots of if-then-else logic. Weather the parser is correct or the file it exist or not.
+TranscriptReader: Line 45 -> Parser: Line 28 
+    TranscriptReader: Line 54 -> Parser: Line 49
+    TranscriptReader: Line 57 -> Database: Line 42
+    TranscriptReader: Line 57 -> Database: Line 50
+    TranscriptReader: Line 59 -> Database: Line 58
+    TranscriptReader: Line 60 -> Database: Line 58
+    TranscriptReader: Line 61 -> Database: Line 69
+    TranscriptReader: Line 62 -> Database: Line 80
+    TranscriptReader: Line 63 -> Database: Line 125
+    TranscriptReader: Line 65 -> Database: Line 106
+    TranscriptReader: Line 66 -> Database: Line 110
+    TranscriptReader: Line 67 -> Database: Line 125
+    TranscriptReader: Line 70 -> Database: Line 95
+    TranscriptReader: Line 71 -> Database: Line 110
+    TranscriptReader: Line 74 -> Database: Line 161
+    TranscriptReader: Line 77 -> Database: Line 169
+        Parser: Line 30 -> WordExtractor: Line 25
+    Parser: Line 40 -> WordExtractor: Line 39
+    Parser: Line 60 -> Database: Line 29
+    Parser: Line 63 -> Database: Line 179 
+    Parser: Line 66 -> WordExtractor: Line 92
+    Parser: Line 69 -> WordExtractor: Line 87
+    Parser: Line 89 -> WordExtractor: Line 92
+    Parser: Line 96 -> WordExtractor: Line 97
+    Parser: Line 141 -> WordExtractor: Line 97
+    Parser: Line 149 -> WordExtractor: Line 97
+    Parser: Line 153 -> GPAconverter: Line 23
+    Parser: Line 152 -> CourseInfo: Line 21 
+    Parser: Line 156 -> CourseInfo: Line 26
+    Parser: Line 169 -> WordExtractor: Line 97
+    Parser: Line 192 -> WordExtractor: Line 97
+    Parser: Line 212 -> WordExtractor: Line 97
+
+Task 3.1.1:
+I am going to use path based analysis to create test cases.
+path analysis: based on the path showed in the messages, I can create test cases for all relevant paths.
+    TranscriptReader: Line 45 -> Parser: Line 28 (Testing)
+    TranscriptReader: Line 54 -> Parser: Line 49
+    TranscriptReader: Line 57 -> Database: Line 42
+    TranscriptReader: Line 57 -> Database: Line 50
+    TranscriptReader: Line 59 -> Database: Line 58
+    TranscriptReader: Line 60 -> Database: Line 58
+    TranscriptReader: Line 61 -> Database: Line 69
+    TranscriptReader: Line 62 -> Database: Line 80
+    TranscriptReader: Line 63 -> Database: Line 125
+    TranscriptReader: Line 65 -> Database: Line 106 (Testing)
+    TranscriptReader: Line 66 -> Database: Line 110
+    TranscriptReader: Line 67 -> Database: Line 125
+    TranscriptReader: Line 70 -> Database: Line 95
+    TranscriptReader: Line 71 -> Database: Line 110
+    TranscriptReader: Line 74 -> Database: Line 161
+    TranscriptReader: Line 77 -> Database: Line 169
+
+    Database: Line 33 -> GPAcalculator: Line 34
+    Database: Line 163 -> GPAcalculator: Line 110
+    Database: Line 171 -> GPAcalculator: Line 148
+    Database: Line 182 -> GPAcalculator: Line 53
+
+    Parser: Line 30 -> WordExtractor: Line 25
+    Parser: Line 40 -> WordExtractor: Line 39
+    Parser: Line 60 -> Database: Line 29
+    Parser: Line 63 -> Database: Line 179 (Testing)
+    Parser: Line 66 -> WordExtractor: Line 92
+    Parser: Line 69 -> WordExtractor: Line 87
+    Parser: Line 89 -> WordExtractor: Line 92
+    Parser: Line 96 -> WordExtractor: Line 97
+    Parser: Line 141 -> WordExtractor: Line 97
+    Parser: Line 149 -> WordExtractor: Line 97
+    Parser: Line 153 -> GPAconverter: Line 23
+    Parser: Line 152 -> CourseInfo: Line 21 (Testing)
+    Parser: Line 156 -> CourseInfo: Line 26
+    Parser: Line 169 -> WordExtractor: Line 97
+    Parser: Line 192 -> WordExtractor: Line 97
+    Parser: Line 212 -> WordExtractor: Line 97
+
+    GPAcalculator: Line 40 -> TermInfo: Line 18
+    GPAcalculator: Line 100 -> GPAconverter: Line 22
+    GPAcalculator: Line 132 -> GPAconverter: Line 48 (Testing)
+    GPAcalculator: Line 137 -> GPAconverter: Line 48
+    
+Task 3.2:
+System Interfaces:TranscriptReader takes input file as well as output file with -o. Data files will contain the transcript information for a sing
+le student. 
+high-level use case: TranscriptReader user input a full marks txt file and see the result.
+Data files: system will read the data files that provided by users. 
+Output: System will output a file when user uses a -o flag.
+
+TranscriptReader: user input a full marks txt file and see the result.
+Preconditions: 1. user has a correct format file
+               2. user input the file through command line argunments.
+Input event: parsing the file in TranscriptReader class
+Output event: pass data to screen or output file as well database
+Postconditions: 1. program generated the output file and display the result on the screen.
+
+TranscriptReader: user input a broken data txt file and see the result.
+Preconditions: 1. user has a broken data file
+               2. user input the file through command line argunments.
+Input event: parsing the file in TranscriptReader class and the process is failed due to broken data
+Output event: pass error messages to the screen
+Postconditions: 1. program does not generate the output file and display the error message.
+
+TranscriptReader: user input a broken header txt file and see the result.
+Preconditions: 1. user has a broken header file
+               2. user input the file through command line argunments.
+Input event: parsing the file in TranscriptReader class and the process is failed due to broken header
+Output event: pass error messages to the screen
+Postconditions: 1. program does not generate the output file and display the error message.
+
+TranscriptReader: user does not input a file.
+Preconditions: 1. user has no file
+               2. user does not input the file through command line argunments.
+Input event: parsing the file in TranscriptReader class and the process is failed due to no file
+Output event: pass error messages to the screen
+Postconditions: 1. program does not generate the output file and display the error message.
+
+Data file: correct format data file.
+Preconditions: 1. user has a correct format data file
+               2. program read file into database.
+Input event: program takes data file and pass into the database
+Output event: database stores the information in the data file
+Postconditions: 1. program generated the output file if users asks or the output file.
